@@ -1,0 +1,95 @@
+@import "./components/atoms/atoms.css";
+@import "./components/molecules/molecules.css";
+@import "./components/organisms/organisms.css";
+
+.text__title {
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+#slider {
+  padding: 1.5rem;
+  margin-right: 0;
+  margin-left: 0;
+  border-width: .2rem;
+}
+
+.box-center {
+  margin: 0 auto;
+}
+
+#about-us .image__content {
+  width: 50%;
+}
+
+.image__content img {
+  max-width: 100%;
+}
+
+#our-service {
+  padding-bottom: 50px;
+}
+
+.service p {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 12px;
+  text-align: center;
+}
+
+#koi-type {
+  padding-top: 3rem;
+  padding-bottom: 7rem;
+}
+
+.group__facility {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.group__facility .image {
+  cursor: pointer;
+  height: 175px;
+  overflow: hidden;
+  transition: .5s ease;
+}
+
+.group__facility .image:hover {
+  transition: .5s ease;
+  transform: scale(1.1);
+}
+
+.group__facility .image img {
+  width: 100%;
+  height: 100%;
+}
+
+#contact-us {
+  background: #000000;
+  padding: 4rem;
+}
+
+#contact-us .logo {
+  height: 100px;
+  border-radius: 50%;
+}
+
+#contact-us .address {
+  color: #ffffff;
+}
+
+ul.social__media {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+ul.social__media li {
+  margin: 0 1rem;
+}
+ul.social__media li a img {
+  height: 20px;
+}
+

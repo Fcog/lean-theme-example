@@ -1,0 +1,86 @@
+{
+  "name": "wearenolte/lean-theme",
+  "description": "Barebones modular WordPress theme",
+  "type": "wordpress-theme",
+  "require": {
+    "wearenolte/wp-cpt": "1.0.*",
+    "moxie-lean/assets": "2.*",
+    "moxie-lean/wp-widgets": "^1.0",
+    "moxie-lean/loader": "^1.3",
+    "wearenolte/buster": "^0.1.1",
+    "nolte/wp-endpoint": "3.0.*",
+    "moxie-lean/wp-taxonomy": "1.0.5",
+    "nolte/lean-styleguide": "^1.1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5.6",
+    "wp-coding-standards/wpcs": "^2.3.0",
+    "phpmd/phpmd" : "@stable"
+  },
+  "authors": [
+    {
+      "name": "Nolte",
+      "email": "devs@wearenolte.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Lean\\": "backend/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@set-up-php-lint",
+      "@build"
+    ],
+    "post-update-cmd": [
+      "@set-up-php-lint",
+      "@build"
+    ],
+    "build-deps": [
+      "cd frontend && yarn"
+    ],
+    "build-app": [
+      "cd frontend && yarn build"
+    ],
+    "build": [
+      "@build-deps",
+      "@build-app",
+      "@update-version"
+    ],
+    "set-up-php-lint": [
+      "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs/",
+      "phpcs --config-set default_standard ./phpcs.xml",
+      "phpcs --config-set show_progress 1",
+      "phpcs --config-set colors 1",
+      "phpcs --config-set show_warnings 1",
+      "phpcs --config-set ignore_warnings_on_exit 1"
+    ],
+    "update-version": [
+      "version"
+    ],
+    "lint": [
+      "@php-lint",
+      "cd frontend && yarn lint"
+    ],
+    "fix": [
+      "php vendor/bin/phpcbf . --extensions=php"
+    ],
+    "php-lint": [
+      "phpcs . --extensions=php",
+      "phpmd . text phpmd.xml --suffixes php --exclude vendor,frontend/components/atoms/icons"
+    ],
+    "php-fix": [
+      "phpcbf . backend/**.php phpmd.xml"
+    ],
+    "organism": [
+      "cd frontend && bash createPattern.sh organisms "
+    ],
+    "molecule": [
+      "cd frontend && bash createPattern.sh molecules "
+    ],
+    "atom": [
+      "cd frontend && bash createPattern.sh atoms "
+    ]
+  }
+}
